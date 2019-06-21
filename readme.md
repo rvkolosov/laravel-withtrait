@@ -32,12 +32,12 @@ use App\Models\Image;
 
 class Post extends Model
 {
-	use WithTrait;
+    use WithTrait;
 	
 	public function images()
-	{
-	    return $this->hasMany(Image::class);
-	}
+    {
+        return $this->hasMany(Image::class);
+    }
 }
 ```
 
@@ -48,10 +48,10 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-	public function index()
-	{
-	    return Post::withRelations()->get();
-	}
+    public function index()
+    {
+        return Post::withRelations()->get();
+    }
 }
 ```
 
@@ -62,10 +62,10 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-	public function show(Post $post)
-	{
-	    return $post->loadRelations();
-	}
+    public function show(Post $post)
+    {
+        return $post->loadRelations();
+    }
 }
 ```
 
