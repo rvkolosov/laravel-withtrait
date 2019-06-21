@@ -1,6 +1,8 @@
 {
     "name": "rvkolosov/laravel-withtrait",
-    "description": "First version",
+    "description": "WithTrait for dynamic load relations in Laravel Model.",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Roman V. Kolosov",
@@ -8,5 +10,13 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "illuminate/container": "^5.8",
+        "illuminate/database": "^5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "RVKolosov\\LaravelWithTrait\\": "src"
+        }
+    }
 }
