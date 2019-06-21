@@ -1,0 +1,12 @@
+{
+    "name": "rvkolosov/laravel-withtrait",
+    "description": "First version",
+    "authors": [
+        {
+            "name": "Roman V. Kolosov",
+            "email": "roman.kolosov12@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
