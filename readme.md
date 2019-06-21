@@ -34,7 +34,7 @@ class Post extends Model
 {
     use WithTrait;
 	
-	public function images()
+    public function images()
     {
         return $this->hasMany(Image::class);
     }
