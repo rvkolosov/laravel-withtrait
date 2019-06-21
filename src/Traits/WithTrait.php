@@ -57,18 +57,20 @@ trait WithTrait
         {
             foreach ($request->input('with') as $relations)
             {
-                $this->hasRelations($relations);
+                if (strlen($relations))
+                {
+                    $this->hasRelations($relations);
+                    $model = $this;
+                    $split = explode(".", $relations);
+                    foreach($split as $relation) {
+                        $class = get_class($model->$relation()->getRelated());
+                        // TODO: Add permissions check
+    //                    $this->checkPermissions($class);
+                        $model = new $class;
+                    }
 
-                $model = $this;
-                $split = explode(".", $relations);
-                foreach($split as $relation) {
-                    $class = get_class($model->$relation()->getRelated());
-                    // TODO: Add permissions check
-//                    $this->checkPermissions($class);
-                    $model = new $class;
+                    $query->with($relations);
                 }
-
-                $query->with($relations);
             }
         }
 
@@ -87,18 +89,20 @@ trait WithTrait
 
             foreach ($request->input('with') as $relations)
             {
-                $this->hasRelations($relations);
+                if (strlen($relations))
+                {
+                    $this->hasRelations($relations);
+                    $model = $this;
+                    $split = explode(".", $relations);
+                    foreach($split as $relation) {
+                        $class = get_class($model->$relation()->getRelated());
+                        // TODO: Add permissions check
+    //                    $this->checkPermissions($class);
+                        $model = new $class;
+                    }
 
-                $model = $this;
-                $split = explode(".", $relations);
-                foreach($split as $relation) {
-                    $class = get_class($model->$relation()->getRelated());
-                    // TODO: Add permissions check
-//                    $this->checkPermissions($class);
-                    $model = new $class;
+                    $tmp[] = $relations;
                 }
-
-                $tmp[] = $relations;
             }
 
             $this->load($tmp);
